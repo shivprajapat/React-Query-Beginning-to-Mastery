@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Header, Home, RQSuperHeroesPage, SuperHeroesPage } from "./components"
+import { QueryHome, QueryRQSuperHeroesPage, QuerySuperHeroesPage } from './query'
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Header />
+      <main>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/super-heroes' element={<SuperHeroesPage />} />
+          <Route path='/rq-super-heroes' element={<RQSuperHeroesPage />} />
+
+          <Route path='/query-home' element={<QueryHome />} />
+          <Route path='/query-super-heroes' element={<QuerySuperHeroesPage />} />
+          <Route path='/query-rq-super-heroes' element={<QueryRQSuperHeroesPage />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
