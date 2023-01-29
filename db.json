@@ -2,7 +2,7 @@
   "superheroes": [
     {
       "id": 1,
-      "name": "Batman is good",
+      "name": "Batman is not good",
       "alterEgo": "Bruce Wayne"
     },
     {

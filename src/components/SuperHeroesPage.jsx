@@ -10,18 +10,8 @@ const SuperHeroesPage = () => {
     fetchSuperHeroes,
     {
       // ** 3 Type use (true,false,"always");
-
-      refetchOnMount: true,
-      // refetchOnMount:false,
-      // refetchOnMount:"always",
-
-      // ** 3 Type use (true,false,"always");
-      // refetchOnWindowFocus: true,
-      refetchOnWindowFocus: false,
-      // refetchOnWindowFocus: 'always',
-
-
-
+      refetchInterval: 2000,
+      refetchIntervalInBackground:true
     }
   );
 
