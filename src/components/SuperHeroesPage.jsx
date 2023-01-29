@@ -9,8 +9,18 @@ const SuperHeroesPage = () => {
   const { isLoading, data, isError, error, isFetching } = useQuery("query-superheroes",
     fetchSuperHeroes,
     {
-      staleTime: 10000 // default time is 0 seconds
-      // staleTime: Infinity
+      // ** 3 Type use (true,false,"always");
+
+      refetchOnMount: true,
+      // refetchOnMount:false,
+      // refetchOnMount:"always",
+
+      // ** 3 Type use (true,false,"always");
+      // refetchOnWindowFocus: true,
+      refetchOnWindowFocus: false,
+      // refetchOnWindowFocus: 'always',
+
+
 
     }
   );
