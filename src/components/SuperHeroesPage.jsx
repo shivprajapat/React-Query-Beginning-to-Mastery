@@ -9,9 +9,8 @@ const SuperHeroesPage = () => {
   const { isLoading, data, isError, error, isFetching } = useQuery("query-superheroes",
     fetchSuperHeroes,
     {
-      // ** 3 Type use (true,false,"always");
       refetchInterval: 2000,
-      refetchIntervalInBackground:true
+      refetchIntervalInBackground: true
     }
   );
 
