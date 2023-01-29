@@ -9,7 +9,7 @@ const SuperHeroesPage = () => {
   const { isLoading, data, isError, error, isFetching } = useQuery("query-superheroes",
     fetchSuperHeroes,
     {
-      cacheTime: 5000
+      staleTime: 10000 // default time is 0 seconds
     }
   );
 
@@ -24,7 +24,7 @@ const SuperHeroesPage = () => {
     <div>
       <h1>React Query Super Heroes Page</h1>
       {data.data.map((item, i) => (
-        <p key={i}>{item.name}</p>
+        <p key={i}>{item.name}  <b>: {item.alterEgo} </b></p>
       ))}
     </div>
   );
