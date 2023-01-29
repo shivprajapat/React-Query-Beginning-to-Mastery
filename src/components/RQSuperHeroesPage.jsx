@@ -1,11 +1,5 @@
 import React from "react";
 
-const RQSuperHeroesPage = () => {
-  return (
-    <div>
-      <h1>RQ Super Heroes Page</h1>
-    </div>
-  );
-};
+const RQSuperHeroesPage = () => <h1>RQ Super Heroes Page</h1>
 
 export default RQSuperHeroesPage;

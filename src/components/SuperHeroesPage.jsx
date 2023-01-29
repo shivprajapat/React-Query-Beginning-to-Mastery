@@ -1,31 +1,29 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 
+const fetchSuperHeroes = () => {
+  return axios.get("http://localhost:4000/superheroes")
+}
 const SuperHeroesPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const [error, setError] = useState("");
+  const { isLoading, data, isError, error, isFetching } = useQuery("query-superheroes",
+    fetchSuperHeroes,
+    {
+      cacheTime: 5000
+    }
+  );
 
-  useEffect(() => {
-    axios.get("http://localhost:4000/superheroes").then((response) => {
-      setData(response.data);
-      setIsLoading(false);
-    }).catch((error) => {
-      setError(error.message);
-      setIsLoading(false);
-    });
-  }, []);
-  console.log("data", data);
+  console.log({ isLoading, isFetching });
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p>Loading.....</p>;
   }
-  if (error) {
-    return <h2>{error}</h2>;
+  if (isError) {
+    return <h2>{error.message}</h2>;
   }
   return (
     <div>
-      <h1>Super Heroes Page</h1>
-      {data.map((item, i) => (
+      <h1>React Query Super Heroes Page</h1>
+      {data.data.map((item, i) => (
         <p key={i}>{item.name}</p>
       ))}
     </div>
