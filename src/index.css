@@ -27,7 +27,7 @@ a.active {
   color: #fff;
 }
 header {
-  background-color: #f38383;
+  background-color: #f44155;
   padding: 20px 15px;
 }
 nav,
@@ -47,7 +47,18 @@ nav {
   align-items: center;
   justify-content: space-between;
 }
-.logo{
+.logo {
   width: 180px;
   height: auto;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #f44155;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
 }
