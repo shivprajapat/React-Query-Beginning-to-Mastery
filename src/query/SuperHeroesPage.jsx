@@ -3,9 +3,12 @@ import React from "react";
 import { useQuery } from "react-query";
 
 const SuperHeroesPage = () => {
-  const { isLoading, data, isError, error } = useQuery("superheroes", () => {
-    return axios.get("http://localhost:4000/superheroe");
-  });
+  const { isLoading, data, isError, error } = useQuery(
+    "query-superheroes",
+    () => {
+      return axios.get("http://localhost:4000/superheroes");
+    }
+  );
 
   console.log("data", data);
   if (isLoading) {

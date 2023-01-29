@@ -7,16 +7,13 @@ const SuperHeroesPage = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:4000/superheroes")
-      .then((response) => {
-        setData(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setIsLoading(false);
-      });
+    axios.get("http://localhost:4000/superheroes").then((response) => {
+      setData(response.data);
+      setIsLoading(false);
+    }).catch((error) => {
+      setError(error.message);
+      setIsLoading(false);
+    });
   }, []);
   console.log("data", data);
   if (isLoading) {
