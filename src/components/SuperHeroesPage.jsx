@@ -9,7 +9,7 @@ const SuperHeroesPage = () => {
   const { isLoading, data, isError, error, isFetching } = useQuery("query-superheroes",
     fetchSuperHeroes,
     {
-      cacheTime: 5000
+      cacheTime: 5000 // default time is 5 minutes
     }
   );
 
