@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
+import { useSuperHerosData } from "../hooks/useSuperHerosData";
 
 const RQSuperHeroesPage = () => {
     const fetchSuperHeroes = () => {
@@ -14,14 +15,7 @@ const RQSuperHeroesPage = () => {
         console.log('perform side effect after error is returned');
     }
 
-    const { isLoading, data, isFetching, isError, error } = useQuery('super-heroes', fetchSuperHeroes, {
-        onSuccess,
-        onError,
-        select:(data)=>{
-            const superHeros = data.data.map(hero => hero.name);
-            return superHeros;
-        }
-    })
+    const { isLoading, data, isFetching, isError, error } = useSuperHerosData(onError, onSuccess)
 
     if (isLoading || isFetching) {
         return <h2>loading...</h2>
@@ -29,8 +23,8 @@ const RQSuperHeroesPage = () => {
     if (isError) {
         return <h2>{error.message}</h2>
     }
-    console.log('%c shiv console value ✅ !! ', 'background: #4705dc; color: #fff',data);
-    
+    console.log('%c shiv console value ✅ !! ', 'background: #4705dc; color: #fff', data);
+
     return (
         <div>
 
@@ -39,7 +33,7 @@ const RQSuperHeroesPage = () => {
                 <p key={i}>{item.name}  <b>: {item.alterEgo} </b></p>
             ))} */}
             {
-                data.map((item,i) => <h2 key={i}>{item}</h2>)
+                data.map((item, i) => <h2 key={i}>{item}</h2>)
             }
         </div>
     )
