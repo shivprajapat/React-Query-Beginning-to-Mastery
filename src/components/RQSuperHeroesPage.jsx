@@ -16,7 +16,11 @@ const RQSuperHeroesPage = () => {
 
     const { isLoading, data, isFetching, isError, error } = useQuery('super-heroes', fetchSuperHeroes, {
         onSuccess,
-        onError
+        onError,
+        select:(data)=>{
+            const superHeros = data.data.map(hero => hero.name);
+            return superHeros;
+        }
     })
 
     if (isLoading || isFetching) {
@@ -25,13 +29,18 @@ const RQSuperHeroesPage = () => {
     if (isError) {
         return <h2>{error.message}</h2>
     }
+    console.log('%c shiv console value ✅ !! ', 'background: #4705dc; color: #fff',data);
+    
     return (
         <div>
 
             <h1>RQ Super Heroes Page</h1>
-            {data?.data.map((item, i) => (
+            {/* {data?.data.map((item, i) => (
                 <p key={i}>{item.name}  <b>: {item.alterEgo} </b></p>
-            ))}
+            ))} */}
+            {
+                data.map((item,i) => <h2 key={i}>{item}</h2>)
+            }
         </div>
     )
 }
