@@ -1,12 +1,9 @@
-import axios from "axios";
 import React from "react";
-import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import { useSuperHerosData } from "../hooks/useSuperHerosData";
 
 const RQSuperHeroesPage = () => {
-    const fetchSuperHeroes = () => {
-        return axios.get("http://localhost:4000/superheroes")
-    }
+
     const onSuccess = () => {
         console.log('perform side effect after data is fetched');
     }
@@ -23,8 +20,6 @@ const RQSuperHeroesPage = () => {
     if (isError) {
         return <h2>{error.message}</h2>
     }
-    console.log('%c shiv console value ✅ !! ', 'background: #4705dc; color: #fff', data);
-
     return (
         <div>
 
@@ -32,9 +27,13 @@ const RQSuperHeroesPage = () => {
             {/* {data?.data.map((item, i) => (
                 <p key={i}>{item.name}  <b>: {item.alterEgo} </b></p>
             ))} */}
-            {
-                data.map((item, i) => <h2 key={i}>{item}</h2>)
-            }
+            {data?.data.map(hero => {
+                return (
+                    <div key={hero.id} style={{marginBottom:5}}>
+                        <Link to={`/rq-super-heroes/${hero.id}`}>{hero.name}</Link>
+                    </div>
+                )
+            })}
         </div>
     )
 }
