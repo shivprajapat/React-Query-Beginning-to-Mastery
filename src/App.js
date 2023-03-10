@@ -8,6 +8,7 @@ import {
   SuperHeroesPage,
   RQSuperHeroPage,
   ParallelQueriesPage,
+  DynamicParallelPage,
 } from "./components";
 import { ReactQueryDevtools } from "react-query/devtools";
 
@@ -28,6 +29,10 @@ const App = () => {
               element={<RQSuperHeroPage />}
             />
             <Route path="/rq-parallel" element={<ParallelQueriesPage />} />
+            <Route
+              path="/rq-dynamic-parallel"
+              element={<DynamicParallelPage heroIds={[1,2,3]}/>}
+            />
           </Routes>
         </main>
       </BrowserRouter>

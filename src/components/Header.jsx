@@ -22,7 +22,9 @@ const Header = () => {
           <li>
             <NavLink to="/rq-parallel">Parallel Queries</NavLink>
           </li>
-
+          <li>
+            <NavLink to="/rq-dynamic-parallel">Dynamic Parallel</NavLink>
+          </li>
         </ul>
 
       </nav>
