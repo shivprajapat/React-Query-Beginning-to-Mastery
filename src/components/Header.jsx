@@ -1,6 +1,32 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 const Header = () => {
+  const navItems = [
+    {
+      title: "Home",
+      path: "/"
+    },
+    {
+      title: "Traditional Super Heroes",
+      path: "/super-heroes"
+    },
+    {
+      title: "RQ Super Heroes",
+      path: "/rq-super-heroes"
+    },
+    {
+      title: "Parallel Queries",
+      path: "/rq-parallel"
+    },
+    {
+      title: "Dynamic Parallel",
+      path: "/rq-dynamic-parallel"
+    },
+    {
+      title: "Dependent Queries",
+      path: "/rq-dependent"
+    }
+  ]
   return (
     <header>
       <nav>
@@ -10,21 +36,15 @@ const Header = () => {
           alt=""
         />
         <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/super-heroes">Traditional Super Heroes</NavLink>
-          </li>
-          <li>
-            <NavLink to="/rq-super-heroes">RQ Super Heroes</NavLink>
-          </li>
-          <li>
-            <NavLink to="/rq-parallel">Parallel Queries</NavLink>
-          </li>
-          <li>
-            <NavLink to="/rq-dynamic-parallel">Dynamic Parallel</NavLink>
-          </li>
+          {
+            navItems.map((item, i) => {
+              const { path, title } = item;
+              return (
+                <li key={i}>
+                  <NavLink to={path}>{title}</NavLink>
+                </li>
+              )
+            })}
         </ul>
 
       </nav>
