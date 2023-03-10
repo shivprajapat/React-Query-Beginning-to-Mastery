@@ -7,6 +7,7 @@ import {
   RQSuperHeroesPage,
   SuperHeroesPage,
   RQSuperHeroPage,
+  ParallelQueriesPage,
 } from "./components";
 import { ReactQueryDevtools } from "react-query/devtools";
 
@@ -26,6 +27,7 @@ const App = () => {
               path="/rq-super-heroes/:heroId"
               element={<RQSuperHeroPage />}
             />
+            <Route path="/rq-parallel" element={<ParallelQueriesPage />} />
           </Routes>
         </main>
       </BrowserRouter>
